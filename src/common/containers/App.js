@@ -50,8 +50,6 @@ class App extends Component {
           </div>
         </div>
         <label className="sidebar-toggle" onClick={this.eventToggleSidebar}></label>
-        <label className="undo-button" onClick={this.eventUndo}>&lt;</label>
-        <label className="redo-button" onClick={this.eventRedo}>&gt;</label>
       </div>
     );
   }

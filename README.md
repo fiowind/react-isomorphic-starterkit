@@ -1,10 +1,9 @@
 # Isomorphic Redux App
 
-[![build status](https://travis-ci.org/caljrimmer/isomorphic-redux-app.svg?branch=master&style=flat-square)](https://travis-ci.org/caljrimmer/isomorphic-redux-app)
 
 This project serves as a **simple** boilerplate to start building an isomorphic rendering application in React and Redux.
 
-<img src="http://g.recordit.co/iChc7ZH3H1.gif" width="728" />
+<img src="http://g.recordit.co/BTyZwX4ugR.gif" width="728" />
 
 # Features
 
@@ -12,9 +11,7 @@ This project serves as a **simple** boilerplate to start building an isomorphic 
 - Hot reloading middleware
 - Redux DevTools and Logging
 - Redux Routing
-- Reddit API example
-- Counter example
-- Todo example
+- News list and detail drived by API example
 - Static content example
 
 ## Stack
@@ -64,10 +61,8 @@ http://localhost:3002
 npm test
 ```
 
-## Other Boilerplate code
-
-[Portfolio Redux App](https://github.com/caljrimmer/portfolio-redux-app)
 
 ## Credit
 
-App template was based on [Lanyon Theme](https://github.com/poole/lanyon) by [mdo](https://github.com/mdo)
+App template was based on [Lanyon Theme](https://github.com/poole/lanyon) by [mdo](https://github.com/mdo)<br />
+App earlier version is adapted from [Callum Rimmer](https://github.com/caljrimmer/isomorphic-redux-app)
