@@ -24,7 +24,8 @@ class Sidebar extends Component {
 		  <nav className="sidebar-nav">
 		    <Link to="/home" className="sidebar-nav-item" activeClassName="active">Home <span className="nav-note">[static]</span></Link>
 		    <Link to="/about" className="sidebar-nav-item" activeClassName="active">About <span className="nav-note">[static]</span></Link>
-		    <Link to="/fio" className="sidebar-nav-item" activeClassName="active">Fio <span className="nav-note">[static]</span></Link>
+		    <Link to="/fio" className="sidebar-nav-item" activeClassName="active">今日新闻 <span className="nav-note">[static]</span></Link>
+		    <Link to="/shop" className="sidebar-nav-item" activeClassName="active">点融最热商品 <span className="nav-note">[static]</span></Link>
 		    
 		    <span className="sidebar-nav-item"><span className="nav-note version">{`Currently version ${version}`}</span></span>
 		  </nav>

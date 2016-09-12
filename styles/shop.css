@@ -1,0 +1,15 @@
+.shoplist li{
+	list-style: none;
+	border: 1px solid #eee;
+	margin: .65rem 0;
+	padding: .3rem 1rem;
+}
+.shoplist a{
+	color: #9a9a9a;
+}
+.shoplist a:hover{
+	color: #555;
+}
+h4{
+	text-align: center;
+}

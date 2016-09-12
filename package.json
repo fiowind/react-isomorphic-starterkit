@@ -27,7 +27,8 @@
     "redux": "^3.6.0",
     "redux-router": "^2.1.2",
     "redux-thunk": "^2.1.0",
-    "redux-undo": "^0.6.1"
+    "redux-undo": "^0.6.1",
+    "url": "^0.11.0"
   },
   "devDependencies": {
     "babel-core": "^6.14.0",

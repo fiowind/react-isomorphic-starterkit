@@ -7,6 +7,7 @@ import layout from './layout';
 import version from './version';
 import { listsByFio } from './fio';
 import { getDetail }  from './detail';
+import { shop } from './shop';
 
 const rootReducer = combineReducers({
   user : user,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   layout : undoable(layout),
   listsByFio : undoable(listsByFio),
   getDetail : undoable(getDetail),
+  shop : shop,
   router : routerStateReducer
 });
 
