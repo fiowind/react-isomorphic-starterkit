@@ -5,9 +5,7 @@ import { Link } from 'react-router';
 import classNames from 'classnames';
 import * as UserActions from '../actions/user';
 import * as LayoutActions from '../actions/layout';
-import Home from '../components/Home'
-import Header from '../components/layout/Header'
-import Sidebar from '../components/layout/Sidebar'
+import Home from '../containers/Home'
 
 class App extends Component {
 
@@ -35,21 +33,12 @@ class App extends Component {
 
   render() {
 
-    const { user,layout, version } = this.props;
-    const { sidebarOpen } = layout;
-    const layoutClass = classNames('wrapper',{open : sidebarOpen});
-
     return (
-      <div className={layoutClass}>
-        <Sidebar layout={layout} user={user} version={version} />
-  	    <div className="wrap">
-          <Header/>
-          <div className="container content">
-            {!this.props.children && <Home />}
-            {this.props.children}
-          </div>
+      <div className="main">
+        <div className="container">
+          {!this.props.children && <Home />}
+          {this.props.children}
         </div>
-        <label className="sidebar-toggle" onClick={this.eventToggleSidebar}></label>
       </div>
     );
   }

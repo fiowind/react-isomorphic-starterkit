@@ -10,7 +10,7 @@ var webpackConfig = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/winaward/a/static/'
   },
   exclude: /(node_modules|bower_components)/,
   plugins: [
@@ -27,14 +27,19 @@ if (process.env.NODE_ENV === 'production') {
       './src/client/index.js'
     ],
     module: {
-      loaders: [{
+      loaders: [
+      {
         test: /\.js$/,
         loader: 'babel',
         exclude: /node_modules/,
         include: __dirname
       },
       { test: /\.(png|jpg|gif|jpeg)$/, loader: 'url-loader?limit=8192'},
-      { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap') }
+      { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap') },
+      { 
+        test: /\.styl$/, 
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!stylus-loader?sourceMap')
+      }
     ]},
     plugins : [
       new webpack.DefinePlugin({
@@ -63,7 +68,8 @@ if (process.env.NODE_ENV === 'production') {
           }
         },
         { test: /\.(png|jpg|gif|jpeg)$/, loader: 'url-loader?limit=8192'},
-        { test: /\.css$/, loader: 'style-loader!css-loader' }
+        { test: /\.css$/, loader: 'style-loader!css-loader'},
+        { test: /\.styl$/, loader: 'style-loader!css-loader!stylus-loader'}
     ]},
     entry : [
       'webpack-hot-middleware/client',

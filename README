@@ -1,0 +1,13 @@
+deployment:
+   设置NODE_ENV
+   配置mysql版本5.7
+   运行sql/mysql.sql
+   配置config.js (example 请参照config.js.bak)
+   其中默认端口为5000，如果要更改端口，请联通Dockerfile中的端口号一同改掉
+   Docker启动的时候,请把image中config.logFile映射到一个本地文件夹下
+
+dev:
+    配置mysql 版本目前为：5.7
+    运行sql/mysql.sql 创建表结构
+    配置config.js (example 请参照config.js.bak)
+

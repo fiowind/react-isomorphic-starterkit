@@ -1,0 +1,100 @@
+/* color */
+$d_fontcolor = #333
+$linkColor = #555
+$backcolor = #efeff4
+/* font */
+$d_font = 22px/1.6 'microsoft yahei',"Helvetica Neue",Helvetica,STHeiTi,sans-serif
+
+html
+button
+input
+select
+textarea 
+  color: $d_fontcolor
+
+*
+  box-sizing  border-box
+  margin 0
+  padding 0
+  -webkit-font-smoothing antialiased
+
+a
+  cursor pointer
+  text-decoration none
+
+ul
+  list-style: none;
+  li
+    list-style: none;
+a
+a:visited
+  color: $linkColor
+  text-decoration: none
+
+a:hover
+  color: lighten($linkColor,10%)
+
+::-webkit-input-placeholder { color:#989898;text-shadow:#989898; }
+::-moz-placeholder { color:#989898;text-shadow:#989898; } /* firefox 19+ */
+:-ms-input-placeholder { color:#989898; text-shadow:#989898;} /* ie */
+input:-moz-placeholder { color:#989898; text-shadow:#989898;}
+::-webkit-scrollbar { width: 0px; }
+
+body
+  font-size 1em
+  font $d_font
+  background #fff
+  line-height 1.5
+  -ms-text-size-adjust 100%
+  -webkit-text-size-adjust 100%
+  font-family 'proxima-nova', 'Proxima Nova', sans-serif
+
+  .loader{
+    position: fixed;
+    width: 100vw;
+    z-index: 100;
+    height: 100vh;
+    top: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 25%;
+    align-items: center;
+    padding-top: 40%;
+  }
+  .ball-clip-rotate > div {
+      background-color: #fff;
+      width: 15px;
+      height: 15px;
+      border-radius: 100%;
+      margin: 2px;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      border: 4px solid #5ea8f0;
+      border-bottom-color: transparent;
+      height: 50px;
+      width: 50px;
+      background: transparent !important;
+      display: inline-block;
+      -webkit-animation: rotate 0.75s 0s linear infinite;
+      animation: rotate 0.75s 0s linear infinite;
+  }
+  @keyframes rotate
+  {
+  0% {
+      -webkit-transform: rotate(0deg) scale(1);
+      transform: rotate(0deg) scale(1);
+  }
+  50% {
+      -webkit-transform: rotate(180deg) scale(0.6);
+      transform: rotate(180deg) scale(0.6);
+  }
+
+  100% {
+      -webkit-transform: rotate(360deg) scale(1);
+      transform: rotate(360deg) scale(1);
+  }
+  }

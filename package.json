@@ -7,27 +7,33 @@
     "clean": "rm -rf dist",
     "start": "NODE_ENV=development && supervisor -w src/server src/server/index.js",
     "start-prod": "NODE_ENV=production node src/server/index.js --progress --colors --profile",
-    "build": "npm run clean && NODE_ENV=production webpack -p --progress --colors --profile",
+    "build": "NODE_ENV=production webpack -p --progress --colors --profile",
     "test": "NODE_ENV=test mocha --compilers js:babel-core/register --recursive"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fiowind/react-isomorphic-startkit.git"
+    "url": "https://github.com/fiowind/react-isomorphic-starterkit.git"
   },
   "license": "MIT",
   "dependencies": {
     "axios": "^0.14.0",
+    "body-parser": "^1.15.2",
     "classnames": "^2.2.5",
+    "compression": "^1.6.2",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.2",
     "express": "^4.14.0",
-    "history": "1.13.0",
+    "history": "2.0.1",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.7.0",
+    "react-router-redux": "4.0.1",
     "redux": "^3.6.0",
     "redux-router": "^2.1.2",
     "redux-thunk": "^2.1.0",
     "redux-undo": "^0.6.1",
+    "request": "^2.75.0",
     "url": "^0.11.0"
   },
   "devDependencies": {
@@ -55,6 +61,8 @@
     "redux-devtools": "^3.3.1",
     "redux-logger": "^2.6.1",
     "style-loader": "^0.13.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^2.3.1",
     "supervisor": "^0.11.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
