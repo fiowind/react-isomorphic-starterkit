@@ -5,7 +5,7 @@ import GiftBottom from './components/GiftBottom';
 import Loading from './components/loading'
 
 function getLocalTime(nS) {     
-  return new Date(parseInt(nS) * 1000).toLocaleString().replace(/\//g,'.').replace(/\-/g,'.').replace(/\.0/g,'.').substring(0,10)
+  return new Date(parseInt(nS)).toISOString().replace(/\//g,'.').replace(/\-/g,'.').replace(/\.0/g,'.').substring(0,9)
 }
 
 

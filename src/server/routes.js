@@ -34,46 +34,6 @@ router.get('/home',function(req,res,next){
            nickname:'hualu',
            recommand: 20,
            avatar: 'http://dev.yqtcdn.net/avatar/000/000/777/1473669533632_256x256.jpg'
-         },
-         {
-           nickname:'fiowind',
-           recommand: 14,
-           avatar: 'http://dev.yqtcdn.net/avatar/000/000/777/1473669533632_256x256.jpg'
-         },
-         {
-           nickname:'hualu',
-           recommand: 10,
-           avatar: 'http://dev.yqtcdn.net/avatar/000/000/777/1473669533632_256x256.jpg'
-         },
-         {
-           nickname:'hualu',
-           recommand: 4,
-           avatar: 'http://dev.yqtcdn.net/avatar/000/000/777/1473669533632_256x256.jpg'
-         },
-         {
-           nickname:'qimenxiaozi',
-           recommand: 23,
-           avatar: 'http://dev.yqtcdn.net/avatar/000/000/777/1473669533632_256x256.jpg'
-         },
-         {
-           nickname:'hualu',
-           recommand: 20,
-           avatar: 'http://dev.yqtcdn.net/avatar/000/000/777/1473669533632_256x256.jpg'
-         },
-         {
-           nickname:'fiowind',
-           recommand: 14,
-           avatar: 'http://dev.yqtcdn.net/avatar/000/000/777/1473669533632_256x256.jpg'
-         },
-         {
-           nickname:'hualu',
-           recommand: 10,
-           avatar: 'http://dev.yqtcdn.net/avatar/000/000/777/1473669533632_256x256.jpg'
-         },
-         {
-           nickname:'hualu',
-           recommand: 4,
-           avatar: 'http://dev.yqtcdn.net/avatar/000/000/777/1473669533632_256x256.jpg'
          }
       ]
     }

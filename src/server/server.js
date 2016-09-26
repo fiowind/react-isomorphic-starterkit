@@ -6,19 +6,8 @@ import webpackConfig from '../../webpack.config';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { RouterContext, match } from 'react-router';
-import { Provider } from 'react-redux';
-import { fetchComponentDataBeforeRender } from '../common/api/fetchComponentDataBeforeRender';
-
-import configureStore from '../common/store/configureStore';
-import { getUser } from '../common/api/user';
-import routes from '../common/routes';
-import packagejson from '../../package.json';
-
-
 import apiroutes from './routes';
+import serverRender from './serverRender';
 
 const config = require('./config'); 
 const appId = config.appId;
@@ -30,6 +19,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const request =  require('request');
 const compression = require('compression')
+const uuid = require('node-uuid');
 
 app.enable('trust proxy');
 app.use(compression());
@@ -80,11 +70,10 @@ function requestOauthUrl(req, res) {
         console.log('oath authorization url:', rsp.url);
 
         res.cookie('state', rsp.state, {
-          domain: '.youqiantu.com',
+          domain: config.cookieDomain || '.youqiantu.com',
           secure: false,
           expires: new Date(Date.now() + 1000 * 60 * 5), // 五分钟
           httpOnly: true });
-
         res.redirect(rsp.url);
       }
     }
@@ -94,6 +83,7 @@ function requestOauthUrl(req, res) {
     }
   });
 };
+
 
 app.use(function(req, res, next) {
   var ua = req.get('User-Agent') || '';
@@ -120,15 +110,15 @@ app.use(function(req, res, next) {
   var fp = req.cookies.fp;
   if (!fp) {
     fp = uuid();
-    res.cookie('fp', fp, { expires: new Date(Date.now() * 2), domain: '.youqiantu.com' });
+    res.cookie('fp', fp, { expires: new Date(Date.now() * 2), domain: config.cookieDomain || '.youqiantu.com' , httpOnly:false});
   }
 
   if(req.query.refuid && req.cookies.refuid != req.query.refuid){
-    res.cookie('refuid', req.query.refuid, { domain: config.cookieDomain || '.youqiantu.com' });
+    res.cookie('refuid', req.query.refuid, { domain: config.cookieDomain || '.youqiantu.com', httpOnly: false});
   }
 
   if(req.query.cid && req.cookies.cid != req.query.cid){
-    res.cookie('cid', req.query.cid, { domain: config.cookieDomain || '.youqiantu.com' });
+    res.cookie('cid', req.query.cid, { domain: config.cookieDomain || '.youqiantu.com', httpOnly:false});
   }
 
   console.log('request url:', req.originalUrl);
@@ -196,54 +186,16 @@ app.use(function(req, res, next) {
 
 app.use(config.appDomain+'/api', apiroutes);
 
+// app.use(config.appDomain+'*',express.static(__dirname + '/../../dist'));
+
 // view engine setup
 app.set('views', path.join(__dirname+ '/../../', 'views'));
 app.set('view engine', 'ejs');
 
-app.get(config.appDomain+"*", function (req, res,) {
+app.use(config.appDomain+'*',serverRender);
 
-  const location = req.url;
 
-  getUser(user => {
-      if(!user) {
-        return res.status(401).end('Not Authorised');
-      }
-      match({ routes, location:'/', basename:config.appDomain }, (err, redirectLocation, renderProps) => {
-        if(err) {
-          console.error(err);
-          return res.status(500).end('Internal server error');
-        }
-        if(!renderProps)
-          return res.status(404).end('Not found');
-          const store = configureStore({user : user, version : packagejson.version});
-          const InitialView = (
-            <Provider store={store}>
-              <RouterContext {...renderProps} />
-            </Provider>
-          );
-        //This method waits for all render component promises to resolve before returning to browser
-        fetchComponentDataBeforeRender(store.dispatch, renderProps.components, renderProps.params)
-          .then(html => {
-            const componentHTML = renderToString(InitialView);
-            const initialState = store.getState();
-            res.render('index', { 
-              html: componentHTML,
-              initialState: JSON.stringify(initialState)
-            });
-            // res.status(200).end(renderFullPage(componentHTML,initialState))
-          })
-          .catch(err => {
-            console.log(err)
-            res.end(renderFullPage("",{}))
-          });
-      });
-
-    }
-  )
-
-});
-
-const server = app.listen(config.ports || 3002, function () {
+const server = app.listen(config.ports || 3002 , function () {
   const host = server.address().address;
   const port = server.address().port;
   console.log('Example app listening at http://%s:%s', host, port);

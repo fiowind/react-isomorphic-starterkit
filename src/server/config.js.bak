@@ -24,4 +24,4 @@ exports.appDomain = '/winaward/a';
 
 exports.drHost = 't.youqiantu.com';
 
-exports.yqtapi = 'http://api.serv002.dev.dr-social.cn';
+exports.yqtapi = 'https://api.youqiantu.com';

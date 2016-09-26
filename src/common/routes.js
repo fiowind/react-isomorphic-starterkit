@@ -4,9 +4,9 @@ import React from "react";
 import App from "./containers/App";
 
 //Redux Smart
-import Home from "./containers/Home";
+import Home from "./containers/home";
 import RankPage from "./containers/RankPage";
-import UserInvite from './containers/invite';
+import UserInvite from './containers/Invite';
 
 //Redux Dumb
 import error404 from "./pages/404";

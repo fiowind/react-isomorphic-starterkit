@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import classNames from 'classnames';
 import * as UserActions from '../actions/user';
 import * as LayoutActions from '../actions/layout';
-import Home from '../containers/Home'
+import Home from '../containers/home'
 
 class App extends Component {
 
