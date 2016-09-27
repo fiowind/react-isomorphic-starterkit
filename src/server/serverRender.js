@@ -12,14 +12,18 @@ import { fetchComponentDataBeforeRender } from '../common/api/fetchComponentData
 
 
 import { Router } from 'express'
+// import ApiClient from './helpers/ApiClient';
 const serverRenderRouter = new Router();
 const config = require('./config'); 
 
+
 serverRenderRouter.get("*", function (req, res,) {
 
-  console.log('serverRenderRouter');
+  // console.log('serverRenderRouter', res);
 
   const location = req.url;
+  // const client = new ApiClient(req);
+  // console.log("client",client);
 
   getUser(user => {
       if(!user) {
@@ -32,7 +36,7 @@ serverRenderRouter.get("*", function (req, res,) {
         }
         if(!renderProps)
           return res.status(404).end('Not found');
-          const store = configureStore({user : user, version : packagejson.version});
+          const store = configureStore({user : user, version : packagejson.version}, req.get('cookie'));
           const InitialView = (
             <Provider store={store}>
               <RouterContext {...renderProps} />

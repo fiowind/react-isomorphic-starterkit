@@ -11,7 +11,7 @@ Home.need = [
 ]
 
 function mapStateToProps(state,ownProps) {
-
+  // console.log("mapStateToProps",state);
   const {
     isFetching,
     lastUpdated,

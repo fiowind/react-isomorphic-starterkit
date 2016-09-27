@@ -15,6 +15,7 @@ import url from 'url';
 let router = Router()
 
 router.get('/home',function(req,res,next){
+  // console.log(req);
   let data = {
     result:'success',
     data:{
@@ -42,6 +43,8 @@ router.get('/home',function(req,res,next){
 });
 
 router.get('/invite/:uid',function(req,res,next){
+  // console.log(req);
+  
   let uid = req.params.uid;
   let data = [
    {

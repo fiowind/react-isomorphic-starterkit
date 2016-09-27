@@ -15,7 +15,7 @@ export function home(state = { }, action) {
     console.log('HOME_GET_SUCCESS');
     return Object.assign({}, state, {
       type: action.type, 
-      data: action.req.data.data,
+      data: action.req.body.data,
       isFetching: false,
       lastUpdated: Date.now(),
     });

@@ -1,4 +1,4 @@
-import request from 'axios';
+import request from 'superagent';
 
 export const HOME_GET = 'HOME_GET';
 export const HOME_GET_REQUEST = 'HOME_GET_REQUEST';

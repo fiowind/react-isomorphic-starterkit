@@ -184,6 +184,16 @@ app.use(function(req, res, next) {
 
 });
 
+app.use(function(req, res, next) {
+  console.log('serverRenderRouter', req.originalUrl);
+  console.log('serverRenderRouter cookie', req.cookies);
+  res.cookie('headimgurl', "ddd");
+  res.cookie('headimgurllarge', 'config.yqtcdn + response.user.avatarUrlNormal');
+  res.cookie('headimgurlsmall', 'config.yqtcdn + response.user.avatarUrlSmall');
+  res.cookie('unionid', 'response.user.uid');
+  return next();
+});
+
 app.use(config.appDomain+'/api', apiroutes);
 
 // app.use(config.appDomain+'*',express.static(__dirname + '/../../dist'));
