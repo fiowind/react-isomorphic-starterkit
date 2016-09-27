@@ -1,4 +1,4 @@
-import request from 'axios';
+import request from 'superagent';
 
 export const DETAIL_GET = 'DETAIL_GET';
 export const DETAIL_GET_REQUEST = 'DETAIL_GET_REQUEST';

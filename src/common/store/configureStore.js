@@ -7,45 +7,46 @@ import createLogger from 'redux-logger';
 import promiseMiddleware from '../api/promiseMiddleware';
 import rootReducer from '../reducers';
 
-const middlewareBuilder = () => {
 
-  let middleware = {};
-  let universalMiddleware = [thunk,promiseMiddleware];
-  let allComposeElements = [];
-  
-  if(process.browser){
-    if(process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test'){
+export default function configureStore(initialState, cookies) {
+  console.log(cookies);
+  const middlewareBuilder = () => {
+
+    let middleware = {};
+    let universalMiddleware = [thunk,promiseMiddleware(cookies)];
+    let allComposeElements = [];
+    
+    if(process.browser){
+      if(process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test'){
+        middleware = applyMiddleware(...universalMiddleware);
+        allComposeElements = [
+          middleware,
+          reduxReactRouter({
+            createHistory
+          })
+        ]
+      }else{
+        middleware = applyMiddleware(...universalMiddleware,createLogger());
+        allComposeElements = [
+          middleware,
+          reduxReactRouter({
+            createHistory
+          }),
+          // devTools()
+        ]
+      }
+    }else{
       middleware = applyMiddleware(...universalMiddleware);
       allComposeElements = [
-        middleware,
-        reduxReactRouter({
-          createHistory
-        })
-      ]
-    }else{
-      middleware = applyMiddleware(...universalMiddleware,createLogger());
-      allComposeElements = [
-        middleware,
-        reduxReactRouter({
-          createHistory
-        }),
-        // devTools()
+        middleware
       ]
     }
-  }else{
-    middleware = applyMiddleware(...universalMiddleware);
-    allComposeElements = [
-      middleware
-    ]
+
+    return allComposeElements;
+
   }
 
-  return allComposeElements;
-
-}
-
-const finalCreateStore = compose(...middlewareBuilder())(createStore);
-
-export default function configureStore(initialState) {
+  const finalCreateStore = compose(...middlewareBuilder())(createStore);
   const store = finalCreateStore(rootReducer, initialState);
 
   if (module.hot) {

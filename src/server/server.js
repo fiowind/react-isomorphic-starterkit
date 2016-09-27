@@ -70,7 +70,7 @@ app.get('/*', function (req, res) {
         if(!renderProps)
           return res.status(404).end('Not found');
 
-          const store = configureStore({user : user, version : packagejson.version});
+          const store = configureStore({user : user, version : packagejson.version},req.get('cookie'));
 
           const InitialView = (
             <Provider store={store}>

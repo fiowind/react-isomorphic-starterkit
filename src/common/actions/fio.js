@@ -1,4 +1,4 @@
-import request from 'axios';
+import request from 'superagent';
 
 export const SELECT_FIO = 'SELECT_FIO';
 export const INVALIDATE_FIO = 'INVALIDATE_FIO';
