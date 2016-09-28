@@ -1,6 +1,6 @@
 {
   "name": "isomorphic-react-starterkit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "isomorphic Redux Starterkit",
   "scripts": {
     "slate": "rm -rf node_modules && npm install",
