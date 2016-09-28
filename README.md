@@ -11,7 +11,7 @@ This project serves as a **simple** boilerplate to start building an isomorphic 
 - Hot reloading middleware
 - Redux DevTools and Logging
 - Redux Routing
-- News list and detail drived by API example
+- News list and detail drived by API Demo
 - Static content example
 
 ## Stack
