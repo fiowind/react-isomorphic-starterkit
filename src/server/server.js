@@ -86,7 +86,7 @@ app.get('/*', function (req, res) {
         //This method waits for all render component promises to resolve before returning to browser
         fetchComponentDataBeforeRender(store.dispatch, renderProps.components, renderProps.params)
           .then(html => {
-            const componentHTML = renderToString(InitialView);
+            const componentHTML = renderToString(InitialView, req.get('cookie'));
             const initialState = store.getState();
             res.status(200).end(renderFullPage(componentHTML,initialState))
           })
