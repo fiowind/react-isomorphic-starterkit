@@ -45,14 +45,14 @@ export function listsByFio(state = { }, action) {
   case LISTS_GET_REQUEST:
   case LISTS_GET_SUCCESS:
     let listsArray = [];
-    if(action.req && action.req.data){
-      // console.log("action.req:::::::::::::::::::"+JSON.stringify(action.req.data));
+    if(action.req ){
+      console.log("action.req:::::::::::::::::::"+JSON.stringify(action.req));
       // let test = JSON.stringify(action.req);
-      // console.log("listsArray:::::::::::::::::::"+typeof(JSON.stringify(action.req.data)));
+      // console.log("listsArray:::::::::::::::::::"+typeof(JSON.stringify(action.req.body)));
 
-      // let data = action.req.data;
-      listsArray = action.req.data;
-      // console.log("actiontype:::::::::::::::::::"+action.fio);
+      // let data = action.req.body;
+      listsArray = action.req.text;
+      console.log("actiontype:::::::::::::::::::"+action.fio);
     }
     // console.log('state[action.fio',state[action.fio]);
     return Object.assign({}, state, {

@@ -33,13 +33,13 @@ function shouldFetchDetail(state,id) {
   // return false
 
   if (!detail) {
-    console.log('1');
+    // console.log('1');
     return true;
   } else if (detail.isFetching) {
-    console.log('2');
+    // console.log('2');
     return false;
   } else{
-    console.log('3');
+    // console.log('3');
     if(detail.detaildata.pk_id==id){
       return false;
     }else{

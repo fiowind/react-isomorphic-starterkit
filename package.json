@@ -28,7 +28,7 @@
     "redux-thunk": "^2.1.0",
     "redux-undo": "^0.6.1",
     "superagent": "^2.3.0",
-    "axios": "^0.14.0"
+    "url": "^0.11.0"
   },
   "devDependencies": {
     "babel-core": "^6.14.0",

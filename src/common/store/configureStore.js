@@ -9,7 +9,7 @@ import rootReducer from '../reducers';
 
 
 export default function configureStore(initialState, cookies) {
-  console.log(cookies);
+
   const middlewareBuilder = () => {
 
     let middleware = {};
@@ -47,6 +47,7 @@ export default function configureStore(initialState, cookies) {
   }
 
   const finalCreateStore = compose(...middlewareBuilder())(createStore);
+
   const store = finalCreateStore(rootReducer, initialState);
 
   if (module.hot) {

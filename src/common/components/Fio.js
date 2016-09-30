@@ -22,7 +22,7 @@ class Fio extends Component {
         this.props.route, 
         this.routerWillLeave
     );
-    console.log("FIO...this.props",this.props);
+    // console.log("FIO...this.props",this.props);
     this.props.fetchListsIfNeeded();
   }
 
@@ -36,7 +36,7 @@ class Fio extends Component {
 
   render () {
     const { lists, isFetching, lastUpdated, error } = this.props;
-    // console.log("fetching State::::::::::::::",this.props);
+    console.log("fetching State::::::::::::::",this.props);
     return (
       <div>
         <p className="post-tag">

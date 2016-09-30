@@ -18,8 +18,10 @@ import routes from '../common/routes';
 import packagejson from '../../package.json';
 
 
+import apiroutes from './routes';
 
-const app = express();
+
+let app = express();
 
 
 const renderFullPage = (html, initialState) => {
@@ -42,6 +44,7 @@ const renderFullPage = (html, initialState) => {
   `;
 }
 
+
 if(process.env.NODE_ENV !== 'production'){
   const compiler = webpack(webpackConfig);
   app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }));
@@ -49,6 +52,8 @@ if(process.env.NODE_ENV !== 'production'){
 }else{
   app.use('/static', express.static(__dirname + '/../../dist'));
 }
+
+app.use('/api', apiroutes);
 
 app.get('/*', function (req, res) {
 
@@ -81,7 +86,7 @@ app.get('/*', function (req, res) {
         //This method waits for all render component promises to resolve before returning to browser
         fetchComponentDataBeforeRender(store.dispatch, renderProps.components, renderProps.params)
           .then(html => {
-            const componentHTML = renderToString(InitialView);
+            const componentHTML = renderToString(InitialView, req.get('cookie'));
             const initialState = store.getState();
             res.status(200).end(renderFullPage(componentHTML,initialState))
           })
