@@ -38,13 +38,13 @@ const renderFullPage = (html, initialState) => {
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}; 
         </script>
-        <script src="/static/bundle.js"></script>
+        <script src="/static/main.bundle.js"></script>
       </body>
     </html>
   `;
 }
 
-
+app.use('/static', express.static(__dirname + '/../../dist'));
 if(process.env.NODE_ENV !== 'production'){
   const compiler = webpack(webpackConfig);
   app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }));

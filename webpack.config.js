@@ -7,15 +7,20 @@ var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 
 var webpackConfig = {
   console: false,
+  entry : [
+    './src/client/index.js'
+  ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
+    chunkFilename: '[id].chunk.js',
     publicPath: '/static/'
   },
   exclude: /(node_modules|bower_components)/,
   plugins: [
+  "add-module-exports",
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
   ]
 };
 if (process.env.NODE_ENV === 'production') {
@@ -23,9 +28,6 @@ if (process.env.NODE_ENV === 'production') {
   webpackConfig = merge(webpackConfig,{
     devtool: "source-map",
     console: false,
-    entry : [
-      './src/client/index.js'
-    ],
     module: {
       loaders: [{
         test: /\.js$/,
@@ -65,10 +67,6 @@ if (process.env.NODE_ENV === 'production') {
         { test: /\.(png|jpg|gif|jpeg)$/, loader: 'url-loader?limit=8192'},
         { test: /\.css$/, loader: 'style-loader!css-loader' }
     ]},
-    entry : [
-      'webpack-hot-middleware/client',
-      './src/client/index.js'
-    ],
     plugins : [
       new webpack.HotModuleReplacementPlugin(),
       new webpack.DefinePlugin({
