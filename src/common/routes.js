@@ -15,13 +15,9 @@ import HomePage from "./components/Home";
 // import AboutPage from "./components/About";
 import error404 from "./components/404";
 
-const getComponent = function(nextState, cb) {
-  require.ensure([], (require) => {
-    cb(null, require('./containers/Shop'))
-  })
+if (typeof require.ensure !== 'function') {
+ require.ensure = (d, c) => c(require)
 }
-
-
 
 export default (
   <Route name="app" path="/" component={App}>
