@@ -32,7 +32,7 @@ export default (
     <Route path="shop" getComponent={(location, cb) => {
     require.ensure([], (require) => {
       cb(null, require('./containers/Shop').default)
-    })git
+    })
   }} />
     <Route path="shop/:pid" component={ShopDetail} />
     <Route path="*" component={error404}/>
