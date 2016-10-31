@@ -15,6 +15,7 @@ export function shop(state = { }, action) {
     });
   case SHOP_LISTS_GET_SUCCESS:
     console.log('SHOP_LISTS_GET_SUCCESS');
+    console.log(action);
     return Object.assign({}, state, {
       type: action.type, 
       data: action.req.body.data,

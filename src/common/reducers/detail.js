@@ -38,12 +38,9 @@ export function getDetail(state = { }, action) {
   case DETAIL_GET_SUCCESS:
     let detaildata = {};
     if(action.req && action.req.data){
-      // console.log("action.req:::::::::::::::::::"+typeof(action.req.data));
-      // console.log(action.req.data);
-      detaildata = action.req.data;
-      // console.log("listsArray:::::::::::::::::::"+listsArray);
+      detaildata = action.req.text;
     }
-    console.log('state[action.cio]',state[action.cio]);
+    console.log('state[action.cio]',action);
     return Object.assign({}, state, {
       [action.cio]: detail(state[action.cio], {
         type: action.type,

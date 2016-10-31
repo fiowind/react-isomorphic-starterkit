@@ -12,21 +12,19 @@ export const LISTS_GET_FAILURE = 'LISTS_GET_FAILURE';
 export function invalidateFio(fio) {
   return {
     type: INVALIDATE_FIO,
-    fio
   };
 }
 
 export function fetchLists(fio = 'fio') {
   return {
     type: LISTS_GET,
-    fio:'fio',
     promise: request.get(`https://read.dianrong.com/api/news_list`)
   }
 }
 
 function shouldFetchLists(state, fio) {
   console.log('state.listsByFio[fio]',state);
-  const lists = state.listsByFio.present.fio;
+  const lists = state.listsByFio.items;
   // return false
   if (!lists) {
     return true;

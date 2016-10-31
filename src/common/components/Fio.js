@@ -7,7 +7,7 @@ class Fio extends Component {
 
   constructor(props) {
     super(props);
-    this.routerWillLeave = this.routerWillLeave.bind(this);
+    // this.routerWillLeave = this.routerWillLeave.bind(this);
     // this.handleRefreshClick = this.handleRefreshClick.bind(this);
   }
   routerWillLeave(nextLocation) {
@@ -18,10 +18,10 @@ class Fio extends Component {
   }
 
   componentDidMount() {
-    this.props.router.setRouteLeaveHook(
-        this.props.route, 
-        this.routerWillLeave
-    );
+    // this.props.router.setRouteLeaveHook(
+    //     this.props.route, 
+    //     this.routerWillLeave
+    // );
     // console.log("FIO...this.props",this.props);
     this.props.fetchListsIfNeeded();
   }
@@ -35,8 +35,8 @@ class Fio extends Component {
   }
 
   render () {
+    console.log('this.fio.props',this.props);
     const { lists, isFetching, lastUpdated, error } = this.props;
-    console.log("fetching State::::::::::::::",this.props);
     return (
       <div>
         <p className="post-tag">
@@ -47,27 +47,31 @@ class Fio extends Component {
             </span>
           }
         </p>
+        {isFetching &&
+          <h3>Loading...</h3>
+        }
         {!isFetching &&
           <a href='#'
              onClick={this.handleRefreshClick.bind(this)}>
             Refresh
           </a>
         }
-        {isFetching && lists.length === 0 &&
+        {isFetching &&
           <h3>Loading...</h3>
         }
-        {!isFetching && error && lists.length === 0 &&
+        {!isFetching && error && typeof(lists)!="object" &&
           <h3 className="post-error">There has been an Error</h3>
         }
-        {!isFetching && !error && lists.length === 0 &&
+        {!isFetching && !error && typeof(lists)!="object" &&
           <h3>Empty</h3>
         }
-        {lists.length > 0 &&
+        {lists &&
           <div style={{ opacity: isFetching ? 0.5 : 1 }}>
           <div>
             {lists.map((list, i) =>
               <Link className="title" key={i} to={`/detail/${list.pk_id}`} >
                 <blockquote key={i}>{list.title} <span>{list.source}</span></blockquote>
+                <img src={"https://read.dianrong.com"+list.image_urls} alt=""/>
               </Link>
             )}
           </div>
@@ -85,4 +89,4 @@ Fio.propTypes = {
   lastUpdated: PropTypes.number
 };
 
-export default withRouter(Fio);
+export default Fio;

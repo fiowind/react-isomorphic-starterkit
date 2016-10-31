@@ -11,7 +11,6 @@ export const DETAIL_DELETE = 'DETAIL_DELETE';
 export function invalidateDetail() {
   return {
     type: INVALIDATE_FIO,
-    cio:'cio'
   };
 }
 
@@ -20,9 +19,8 @@ export function fetchDetail({ id }) {
   console.log( 'readOne >id: ', id, ' >arguments: ', arguments );
   return {
     type: DETAIL_GET,
-    cio:'cio',
     promise: request.get('https://read.dianrong.com/api/detail',{
-      params:{id:id}
+      id:id
     })
   }
 }
@@ -59,7 +57,6 @@ function shouldDeleteDetail(state,id) {
 function deleteDetail(){
   return{
     type: DETAIL_DELETE,
-    cio:'cio'
   }
 }
 

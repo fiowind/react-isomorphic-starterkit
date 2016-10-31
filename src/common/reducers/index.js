@@ -13,8 +13,8 @@ const rootReducer = combineReducers({
   user : user,
   version : version,
   layout : undoable(layout),
-  listsByFio : undoable(listsByFio),
-  getDetail : undoable(getDetail),
+  listsByFio : listsByFio,
+  getDetail : getDetail,
   shop : shop,
   router : routerStateReducer
 });

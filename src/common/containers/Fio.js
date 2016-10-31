@@ -13,17 +13,17 @@ Fio.need = [
 
 function mapStateToProps(state) {
   let { listsByFio } = state;
-  listsByFio = listsByFio.present.fio;
+  console.log('listByFio',listsByFio);
   const {
     isFetching,
     lastUpdated,
     error,
-    items: lists
-  } = listsByFio || {
+    lists
+  } = Object.assign(listsByFio, {
     isFetching: false,
     error:{},
-    items: []
-  };
+    lists: listsByFio.items || []
+  });
   return {
     lists,
     isFetching,

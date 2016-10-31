@@ -41,7 +41,7 @@ class Shoplist extends Component {
 
   render () {
     const { shoplists, isFetching, error, lastUpdated } = this.props;
-    // console.log('sholist props', this.props);
+    console.log('sholist props', this.props);
     return (
       <div className="shoplist">
         <p className="post-tag">
